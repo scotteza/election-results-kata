@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace ElectionResultsKata.Tests
 {
-    class ElectionResultProcessorShould
+    internal class ElectionResultProcessorShould
     {
         [Test]
         public void CallsCollaboratorsInTheCorrectOrder()
