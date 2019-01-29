@@ -22,7 +22,8 @@ namespace ElectionResultsKata
             var line = _fileReader.ReadLinesFromFile();
             var rawElectionResult = _resultParser.ParseElectionResult(line);
             var transformedElectionResult = _resultTransformer.TransformResult(rawElectionResult);
-            _resultFormatter.FormatResult(transformedElectionResult);
+            var formattedResult = _resultFormatter.FormatResult(transformedElectionResult);
+            _outputFeed.FeedOutput(formattedResult);
         }
     }
 }

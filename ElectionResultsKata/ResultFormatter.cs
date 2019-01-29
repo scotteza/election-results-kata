@@ -2,7 +2,7 @@
 {
     public class ResultFormatter
     {
-        public virtual void FormatResult(TransformedElectionResult transformedElectionResult)
+        public virtual string FormatResult(TransformedElectionResult transformedElectionResult)
         {
             throw new System.NotImplementedException();
         }

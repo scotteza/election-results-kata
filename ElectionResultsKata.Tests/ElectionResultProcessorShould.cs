@@ -20,11 +20,12 @@ namespace ElectionResultsKata.Tests
             resultParser.Setup(x => x.ParseElectionResult("a single line")).Returns(rawElectionResult);
             var transformedElectionResult = new TransformedElectionResult();
             resultTransformer.Setup(x => x.TransformResult(rawElectionResult)).Returns(transformedElectionResult);
+            resultFormatter.Setup(x => x.FormatResult(transformedElectionResult)).Returns("a single, formatted line");
 
             var electionResultProcessor = new ElectionResultProcessor(fileReader.Object, outputFeed.Object, resultParser.Object, resultTransformer.Object, resultFormatter.Object);
             electionResultProcessor.ProcessResults();
 
-            resultFormatter.Verify(x => x.FormatResult(transformedElectionResult));
+            outputFeed.Verify(x => x.FeedOutput("a single, formatted line"));
         }
     }
 }
