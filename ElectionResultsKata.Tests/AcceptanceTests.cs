@@ -18,7 +18,7 @@ namespace ElectionResultsKata.Tests
             var expectedOutput = @"Cardiff West || Conservative Party | 30.76% || Labour Party | 49.72% || UKIP | 13.75% || Liberal Democrats | 5.78%" + Environment.NewLine
                                    + "Islington South & Finsbury || Labour Party | 51.45% || Conservative Party | 21.43% || Liberal Democrats | 11.02% || UKIP | 7.70% || Green Party | 7.69% || Independent | 0.70%";
 
-            var electionResultProcessor = new ElectionResultProcessor(fileReader.Object, outputFeed.Object, new ResultParser(), new ResultTransformer());
+            var electionResultProcessor = new ElectionResultProcessor(fileReader.Object, outputFeed.Object, new ResultParser(), new ResultTransformer(), new ResultFormatter());
             electionResultProcessor.ProcessResults();
 
             outputFeed.Verify(of => of.FeedOutput(expectedOutput));

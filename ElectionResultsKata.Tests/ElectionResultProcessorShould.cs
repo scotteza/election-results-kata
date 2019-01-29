@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using System.Security.Cryptography.X509Certificates;
+using Moq;
 using NUnit.Framework;
 
 namespace ElectionResultsKata.Tests
@@ -12,15 +13,18 @@ namespace ElectionResultsKata.Tests
             var outputFeed = new Mock<OutputFeed>();
             var resultParser = new Mock<ResultParser>();
             var resultTransformer = new Mock<ResultTransformer>();
+            var resultFormatter = new Mock<ResultFormatter>();
 
             fileReader.Setup(x => x.ReadLinesFromFile()).Returns("a single line");
             var rawElectionResult = new RawElectionResult();
             resultParser.Setup(x => x.ParseElectionResult("a single line")).Returns(rawElectionResult);
+            var transformedElectionResult = new TransformedElectionResult();
+            resultTransformer.Setup(x => x.TransformResult(rawElectionResult)).Returns(transformedElectionResult);
 
-            var electionResultProcessor = new ElectionResultProcessor(fileReader.Object, outputFeed.Object, resultParser.Object, resultTransformer.Object);
+            var electionResultProcessor = new ElectionResultProcessor(fileReader.Object, outputFeed.Object, resultParser.Object, resultTransformer.Object, resultFormatter.Object);
             electionResultProcessor.ProcessResults();
 
-            resultTransformer.Verify(x => x.TransformResult(rawElectionResult));
+            resultFormatter.Verify(x => x.FormatResult(transformedElectionResult));
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class ResultTransformer
     {
-        public virtual void TransformResult(RawElectionResult rawElectionResult)
+        public virtual TransformedElectionResult TransformResult(RawElectionResult rawElectionResult)
         {
             throw new System.NotImplementedException();
         }
