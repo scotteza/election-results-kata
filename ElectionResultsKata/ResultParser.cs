@@ -4,7 +4,7 @@ namespace ElectionResultsKata
 {
     public class ResultParser
     {
-        public virtual void ParseElectionResult(string inputLine)
+        public virtual RawElectionResult ParseElectionResult(string inputLine)
         {
             throw new NotImplementedException();
         }
