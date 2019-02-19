@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System.Linq;
 
 namespace ElectionResultsKata.Tests
 {
@@ -21,11 +21,12 @@ namespace ElectionResultsKata.Tests
             var resultParser = new ResultParser();
 
             var rawElectionResult = resultParser.ParseElectionResult("Cardiff West, 11014, C");
+            var voteCounts = rawElectionResult.GetVoteCounts();
 
             Assert.That(rawElectionResult.Constituency, Is.EqualTo("Cardiff West"));
-            Assert.That(rawElectionResult.Results.Count, Is.EqualTo(1));
-            Assert.That(rawElectionResult.Results.First().Party, Is.EqualTo("C"));
-            Assert.That(rawElectionResult.Results.First().Count, Is.EqualTo(11014));
+            Assert.That(voteCounts.Count, Is.EqualTo(1));
+            Assert.That(voteCounts.First().Party, Is.EqualTo("C"));
+            Assert.That(voteCounts.First().Count, Is.EqualTo(11014));
         }
     }
 }
