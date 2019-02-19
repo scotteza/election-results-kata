@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace ElectionResultsKata
+﻿namespace ElectionResultsKata
 {
     public class ResultParser
     {
         public virtual RawElectionResult ParseElectionResult(string inputLine)
         {
-            throw new NotImplementedException();
+            var rawElectionResult = new RawElectionResult();
+            rawElectionResult.Constituency = inputLine;
+            return rawElectionResult;
         }
     }
 }

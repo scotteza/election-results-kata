@@ -2,5 +2,6 @@
 {
     public class RawElectionResult
     {
+        public string Constituency { get; set; }
     }
 }
