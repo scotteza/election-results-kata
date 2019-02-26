@@ -17,7 +17,7 @@
             {
                 var count = GetCount(split, i);
                 var party = GetParty(split, i);
-                var voteCount = new VoteCount(party, count);
+                var voteCount = new RawVoteCount(party, count);
                 rawElectionResult.AddVoteCount(voteCount);
             }
 

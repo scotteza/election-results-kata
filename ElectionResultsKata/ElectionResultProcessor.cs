@@ -2,8 +2,8 @@ namespace ElectionResultsKata
 {
     public class ElectionResultProcessor
     {
-        private FileReader _fileReader;
-        private OutputFeed _outputFeed;
+        private readonly FileReader _fileReader;
+        private readonly OutputFeed _outputFeed;
         private readonly ResultParser _resultParser;
         private readonly ResultTransformer _resultTransformer;
         private readonly ResultFormatter _resultFormatter;

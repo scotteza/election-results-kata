@@ -6,21 +6,21 @@ namespace ElectionResultsKata
     public class RawElectionResult
     {
         public string Constituency { get; set; }
-        private readonly List<VoteCount> _results;
+        private readonly List<RawVoteCount> _results;
 
         public RawElectionResult()
         {
-            _results = new List<VoteCount>();
+            _results = new List<RawVoteCount>();
         }
 
-        public void AddVoteCount(VoteCount voteCount)
+        public void AddVoteCount(RawVoteCount voteCount)
         {
             _results.Add(voteCount);
         }
 
-        public IReadOnlyList<VoteCount> GetVoteCounts()
+        public IReadOnlyList<RawVoteCount> GetVoteCounts()
         {
-            return new ReadOnlyCollection<VoteCount>(_results);
+            return new ReadOnlyCollection<RawVoteCount>(_results);
         }
     }
 }

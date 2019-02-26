@@ -21,13 +21,13 @@ namespace ElectionResultsKata.Tests
         {
             var resultTransformer = new ResultTransformer();
             var rawElectionResult = new RawElectionResult { Constituency = "Bethnal Green" };
-            rawElectionResult.AddVoteCount(new VoteCount("C", 11014));
+            rawElectionResult.AddVoteCount(new RawVoteCount("C", 11014));
 
             var transformedElectionResult = resultTransformer.TransformResult(rawElectionResult);
 
             var voteCounts = transformedElectionResult.GetVoteCounts();
             Assert.That(voteCounts.Count, Is.EqualTo(1));
-            Assert.That(voteCounts.First().Party, Is.EqualTo("Conservative Party"));
+            Assert.That(voteCounts.First().PartyName, Is.EqualTo("Conservative Party"));
             Assert.That(voteCounts.First().Count, Is.EqualTo(11014));
         }
     }

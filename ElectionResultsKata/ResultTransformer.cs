@@ -7,7 +7,7 @@
             var transformedElectionResult = new TransformedElectionResult(rawElectionResult.Constituency);
             foreach (var voteCount in rawElectionResult.GetVoteCounts())
             {
-                transformedElectionResult.AddVoteCount(new VoteCount("Conservative Party", voteCount.Count));
+                transformedElectionResult.AddVoteCount(new TransformedVoteCount("Conservative Party", voteCount.Count));
             }
             return transformedElectionResult;
         }
